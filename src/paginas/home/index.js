@@ -14,15 +14,16 @@ export default function Home() {
 
   useEffect(()=>{
     const unsubscribe = firebase.database().ref('Alunos').on('value',(snapshot) =>{
-
-      setAlunos(
-        Object.entries(snapshot.val()).map(([key, value]) => {
-          return {
-            id: key,
-            ...value
-          }
-        })
-      );
+      if(!!snapshot.val()){
+        setAlunos(
+          Object.entries(snapshot.val()).map(([key, value]) => {
+            return {
+              id: key,
+              ...value
+            }
+          })
+        );
+      }
   
     })
     return () => {
@@ -45,6 +46,13 @@ export default function Home() {
             <Text>{aluno.Nota1} </Text>
             <Text>{aluno.Nota2} </Text>
             <Text>{aluno.Nota3}</Text>
+            <Image 
+              source={{uri: aluno.Imagem}}
+              style={{
+                width: 50,
+                height: 50
+              }}
+            />
           </View>
         )
       })}
