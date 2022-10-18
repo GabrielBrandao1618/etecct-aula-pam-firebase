@@ -34,7 +34,7 @@ export default function Cadastrar(){
         >
             <Text
                 style={{
-                    color:'green',
+                    color:'red',
                     fontWeight: 'bold'
                 }}
             >
