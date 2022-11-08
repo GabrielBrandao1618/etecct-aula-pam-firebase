@@ -1,11 +1,18 @@
-import {View,Text, Image, StyleSheet} from 'react-native'
+import {View,Text, Image, StyleSheet, Button} from 'react-native'
 import React,{useState} from 'react'
 import { useRoute } from '@react-navigation/native';
 
+import {firebase} from '../../firebase/firebaseConnection'
 
+export default function Detalhes({navigation}){
+    const {params:{nome, nota1, nota2, nota3, imagem, id}} = useRoute()
 
-export default function Detalhes(){
-    const {params:{nome, nota1, nota2, nota3, imagem}} = useRoute()
+    function handleDeleteSelf(){
+        const ref = firebase.database().ref(`Alunos/${id}`)
+        ref.remove()
+        navigation.goBack()
+    }
+
     return(
         <View style={styles.container}>
             <Text style={styles.title}>
@@ -23,9 +30,12 @@ export default function Detalhes(){
                     uri: imagem
                 }}
             />
+
+            <Button
+                title="Deletar aluno"
+                onPress={handleDeleteSelf}
+            />
         </View>
-
-
     );
 }
 

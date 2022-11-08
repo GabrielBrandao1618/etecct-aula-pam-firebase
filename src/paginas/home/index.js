@@ -43,6 +43,7 @@ export default function Home() {
             nota1={aluno.Nota1}
             nota2={aluno.Nota2}
             nota3={aluno.Nota3}
+            id={aluno.id}
           />
         )
       })}
