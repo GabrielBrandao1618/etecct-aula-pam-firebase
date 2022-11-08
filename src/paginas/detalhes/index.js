@@ -32,7 +32,7 @@ export default function Detalhes({navigation}){
     return(
         <View style={styles.container}>
             <Text style={styles.title}>
-                {nome}
+                {_nome}
             </Text>
             <Image 
                 style={{
@@ -66,15 +66,20 @@ export default function Detalhes({navigation}){
                 value={_nota3}
                 onChangeText={setNota3}
             />
+            <View style={styles.buttons}>
+                <Button
+                    title="Deletar aluno"
+                    onPress={handleDeleteSelf}
+                    color="red"
+                    style={styles.button}
+                />
+                <Button
+                    title="Atualizar aluno"
+                    onPress={handleUpdate}
+                    style={styles.button}
+                />
+            </View>
 
-            <Button
-                title="Deletar aluno"
-                onPress={handleDeleteSelf}
-            />
-            <Button
-                title="Atualizar aluno"
-                onPress={handleUpdate}
-            />
         </View>
     );
 }
@@ -86,5 +91,11 @@ const styles = StyleSheet.create({
     },
     container: {
         alignItems: 'center'
+    },
+    buttons: {
+        flexDirection: 'row'
+    },
+    button: {
+        margin: 4
     }
 })
