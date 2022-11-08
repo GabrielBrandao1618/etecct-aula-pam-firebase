@@ -1,9 +1,23 @@
 import {TouchableOpacity, Image, Text, StyleSheet, View} from 'react-native'
 
-export function CardAluno({nota1, nota2, nota3, nome, onPress, imagem}){
+import {useNavigation} from '@react-navigation/native'
+
+export function CardAluno({nota1, nota2, nota3, nome, imagem}){
+    const {navigate} = useNavigation()
+
+    async function onPress(){
+        navigate('detalhes', {
+            nota1,
+            nota2,
+            nota3,
+            nome,
+            imagem
+        })
+    }
+
     return (
         <TouchableOpacity onPress={onPress} style={styles.container}>
-            <Image 
+            <Image
                 source={{
                     uri: imagem,
                     height: 200,
