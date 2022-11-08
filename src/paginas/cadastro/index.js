@@ -34,7 +34,6 @@ export default function Cadastrar(){
         >
             <Text
                 style={{
-                    color:'red',
                     fontWeight: 'bold'
                 }}
             >
@@ -108,14 +107,12 @@ export default function Cadastrar(){
 
 const styles = StyleSheet.create({
     label: {
-        color:'white',
     },
     input: {
-        color:'blue',
-        backgroundColor: 'yellow'
+        borderColor: 'black',
+        borderWidth: 1,
+        margin: 4
     },
     container: {
-        borderWidth: 5,
-        backgroundColor: 'blue'
     }
 })
