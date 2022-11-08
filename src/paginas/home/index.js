@@ -1,16 +1,12 @@
 import React,{useState,useEffect} from 'react'
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View ,FlatList,Image,TouchableOpacity} from 'react-native';
+import { StyleSheet, Text, View ,FlatList,Image} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import {firebase} from '../../firebase/firebaseConnection'
+import { CardAluno } from '../../components/CardAluno';
 
 export default function Home() {
-    // const navigation = useNavigation();
   const [alunos,setAlunos] = useState([]);
-
-//   function irDetalhes(name,n1,n2,n3,img){
-//     navigation.navigate("Detalhes",{nome:name,nota1:n1,nota2:n2,nota3:n3,imagem:img})
-//  }
 
   useEffect(()=>{
     const unsubscribe = firebase.database().ref('Alunos').on('value',(snapshot) =>{
@@ -41,19 +37,13 @@ export default function Home() {
       
       {alunos.map(aluno => {
         return (
-          <View key={aluno.id} style={{flexDirection: 'row'}}>
-            <Text>{aluno.Nome} </Text>
-            <Text>{aluno.Nota1} </Text>
-            <Text>{aluno.Nota2} </Text>
-            <Text>{aluno.Nota3}</Text>
-            <Image 
-              source={{uri: aluno.Imagem}}
-              style={{
-                width: 50,
-                height: 50
-              }}
-            />
-          </View>
+          <CardAluno 
+            imagem={aluno.Imagem}
+            nome={aluno.Nome}
+            nota1={aluno.Nota1}
+            nota2={aluno.Nota2}
+            nota3={aluno.Nota3}
+          />
         )
       })}
 
@@ -66,7 +56,6 @@ export default function Home() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'blue',
     alignItems: 'center',
     justifyContent: 'center'
   },

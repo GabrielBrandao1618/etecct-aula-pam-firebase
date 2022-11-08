@@ -10,7 +10,7 @@ export default function Rotas (){
 
     return(
 
-        <Tab.Navigator screenOptions={{headerShown:false, tabBarStyle:{backgroundColor:'red'}}}>
+        <Tab.Navigator screenOptions={{headerShown:false}}>
             <Tab.Screen name = 'homeStack' component={StackRoutes} />
             <Tab.Screen name = 'cadastrar' component={Cadastrar} />
             <Tab.Screen name="Detalhes" component={Detalhes} />
